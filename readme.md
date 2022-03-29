@@ -1,6 +1,6 @@
 # Temporal Alignment Network for long-term Video 
 
-Tengda Han, Weidi Xie, Andrew Zisserman. Accepted by CVPR2022.
+Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 
 [[project page]](https://www.robots.ox.ac.uk/~vgg/research/tan/)
 
