@@ -5,11 +5,12 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 [[project page]](https://www.robots.ox.ac.uk/~vgg/research/tan/)
 [[PDF]](https://www.robots.ox.ac.uk/~vgg/publications/2022/Han22a/han22a.pdf)
 [[Arxiv]](https://arxiv.org/abs/2204.02968)
+[[Video]](https://youtu.be/77dcM9CyHCY)
 
 <img src="TAN_teaser.png" width="800">
 
 ### Code and Dataset 
-Comming soon.
+We aim to release everything before the conference date (June 20th). Thanks for your interest!
 
 ### Reference
 ```
