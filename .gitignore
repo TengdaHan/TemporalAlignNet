@@ -1,4 +1,3 @@
-scripts/bert-restore-punctuation/
 *.tar
 *.jpg
 *.npy
@@ -21,3 +20,4 @@ wandb/
 just-ask/
 main.pdf
 *.mp4
+*/bert-restore-punctuation/
