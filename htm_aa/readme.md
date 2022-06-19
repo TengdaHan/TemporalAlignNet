@@ -18,8 +18,6 @@ For a video from the HowTo100M dataset, HTM-AA provides:
 
 * [[website]](https://www.robots.ox.ac.uk/~vgg/research/tan/htm_aa_stats.html)
 
-<img src="wordcloud.png" width="800">
-
 
 ### How To Load
 
@@ -27,7 +25,7 @@ For a video from the HowTo100M dataset, HTM-AA provides:
 import pandas as pd
 htm_aa = pd.read_csv('htm_aa_v1.csv')
 
-print(htm_aa..iloc[42].to_dict())
+print(htm_aa.iloc[42].to_dict())
 # {'vid': '6yooogsTG8k',
 #  'timestamp': 284,
 #  'text': "and starting with pink i'm just going to knead that a little bit just to make it nice and smooth"}
