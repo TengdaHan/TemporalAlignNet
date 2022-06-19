@@ -1,4 +1,4 @@
-# HTM-AA Dataset
+# HTM-AA Dataset [[website]](https://www.robots.ox.ac.uk/~vgg/research/tan/#htm-aa)
 
 **HTM-AA** means Auto-Aligned (AA) version of HowTo100M (HTM) dataset. It is an output of our Temporal Alignment Networks and a final goal of this project. 
 
@@ -11,7 +11,7 @@ For a video from the HowTo100M dataset, HTM-AA provides:
 
 ### Download
 
-* **HTM-AA-v1**(329MB csv) [[from Oxford server]](https://www.robots.ox.ac.uk/~vgg/research/tan/#htm-aa)
+* **HTM-AA-v1**(329MB csv) [[from Oxford server]](http://www.robots.ox.ac.uk/~htd/tan/htm_aa_v1.csv)
 [[from Google Drive]](https://drive.google.com/file/d/1_V2LfMil5wnWfxDkzBtSYCw7YUUSjzqE/view?usp=sharing)
 
 ### Statistics
