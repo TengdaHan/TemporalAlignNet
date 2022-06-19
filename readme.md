@@ -10,14 +10,14 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 <img src="TAN_teaser.png" width="800">
 
 ### Datasets
-* HTM-Align [[link]](htm_align/): A manually annotated 80-video subset for alignment evaluation.
-* HTM-AA [[link]](htm_aa/): A large-scale video-text paired dataset automatically aligned using our TAN without using any manual annotations.
+* [**HTM-Align**](htm_align/): A manually annotated 80-video subset for alignment evaluation.
+* [**HTM-AA**](htm_aa/): A large-scale video-text paired dataset automatically aligned using our TAN without using any manual annotations.
 
 ### Tool
-* Sentencify [[link]](sentencify_text/): A pipeline to pre-process ASR text segments and get full sentences.
+* [**Sentencify-text**](sentencify_text/): A pipeline to pre-process ASR text segments and get full sentences.
 
 ### Notes
-* We aim to release other code/model before the conference date (June 20th). Thanks for your interest!
+* We aim to release other code/model before the conference session (June 21). Thanks for your interest!
 
 ### Reference
 ```
