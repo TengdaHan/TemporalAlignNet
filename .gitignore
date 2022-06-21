@@ -23,3 +23,5 @@ main.pdf
 */bert-restore-punctuation/
 */htm_aa_v1.csv
 */vid_to_path.json
+*/vid_to_asr.json
+*.pth

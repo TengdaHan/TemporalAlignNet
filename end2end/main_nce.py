@@ -247,7 +247,7 @@ def get_model_card(tag):
     return model_card_dict.get(tag, tag)
 
 
-def optim_policy(model, policy='default'):
+def optim_policy(model, args, policy='default'):
     params = []
     no_decay = ['.ln_', '.bn', '.bias', '.logit_scale', '.entropy_scale']
     param_group_no_decay = []
@@ -288,7 +288,7 @@ def main(args):
     _, train_loader = get_dataset(args)
 
     ### optimizer ###
-    params = optim_policy(model, args.optim_policy)
+    params = optim_policy(model, args, args.optim_policy)
     optimizer = AdamW(params, lr=args.lr, weight_decay=args.wd, correct_bias=True)
     best_loss = 1e5
 

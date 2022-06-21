@@ -52,21 +52,23 @@ def get_htm_vlen_df():
     return htm_vlen_df
 
 
-def get_vid_to_asr_dict():
+def get_vid_to_asr_dict(json_path):
     """output: dict: vid --> csv path for ASR sentences"""
-    with open('vid_to_asr.json') as fobj:
+    with open(json_path) as fobj:
         content = json.load(fobj)
     return content
 
 
 class HTM_FeatureLoader():
     def __init__(self,
+                 text_tag='htm-fe',
                  tokenizer=None,
                  mode='train',
                  duration=64,
                  trim_ratio=0.1,
                  ):
         self.video_feature_path = '/scratch/shared/beegfs/htd/DATA/HowTo100M/howto100m_s3d_features'
+        self.text_tag = text_tag
         self.mode = mode
         if tokenizer:
             self.tokenizer = tokenizer
@@ -76,9 +78,13 @@ class HTM_FeatureLoader():
         self.trim_ratio = trim_ratio  # not used for now
 
         # loading some helper csv/json
+        tag_to_asr = {
+            'htm-fe': 'vid_to_asr_fe.json',
+            'htm': 'vid_to_asr.json'}
         holdout_vids_set = get_holdout_set()
         self.htm_vlen_df = get_htm_vlen_df()
-        self.vid_to_asr_dict = get_vid_to_asr_dict()
+        self.vid_to_asr_dict = get_vid_to_asr_dict(
+            os.path.join(os.path.dirname(__file__), tag_to_asr[text_tag]))
         
         all_vids = list(self.vid_to_asr_dict.keys())
 
@@ -183,7 +189,7 @@ class HTM_FeatureLoader():
                 cap_entry = cap_df.iloc[idx]
                 text, s, e = cap_entry['text'], cap_entry['start'], cap_entry['end']
                 s, e = round(s), round(e)
-                text = text.replace('\n',' ').strip()
+                text = str(text).replace('\n',' ').strip()
                 if len(text.split()) > 256:
                     text = ' '.join(text.split()[0:256])
                 if s > end_timestamp or e-s < 1:
