@@ -21,3 +21,5 @@ just-ask/
 main.pdf
 *.mp4
 */bert-restore-punctuation/
+*/htm_aa_v1.csv
+*/vid_to_path.json
