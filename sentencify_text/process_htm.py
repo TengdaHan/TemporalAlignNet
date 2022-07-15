@@ -25,7 +25,7 @@ def master_process(cap_dict):
     caps, starts, ends = merge_linebreaks(cap_list, start_list, end_list)
     if len(caps) <= 5:
         return None
-    caps, starts, ends = processor.punctuate(caps, starts, ends)
+    caps, starts, ends = processor.punctuate_and_cut(caps, starts, ends)
     return {'text': caps, 'start': starts, 'end': ends}
 
 
@@ -141,7 +141,7 @@ if __name__ == '__main__':
                 if item is None:
                     continue
                 caps, starts, ends = item
-                caps_, starts_, ends_ = processor.punctuate(caps, starts, ends)
+                caps_, starts_, ends_ = processor.punctuate_and_cut(caps, starts, ends)
                 output.append({'text': caps_, 'start': starts_, 'end': ends_})
                 valid_vids.append(vid)
 
