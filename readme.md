@@ -9,6 +9,9 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 
 <img src="TAN_teaser.png" width="800">
 
+### News
+* [22.08.04] Released HTM-370K and HTM-1.2M [here](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify), the sentencified version of HowTo100M. Thank you for your patience, I'm working on the rest.
+
 ### TLDR
 
 * Natural instructional videos (e.g. from YouTube) has the visual-textual alignment problem, that introduces lots of noise and makes them hard to learn.
@@ -19,9 +22,10 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 noisy instructional videos (we release an Auto-Aligned HTM dataset, **HTM-AA**). 
 * In our paper, we show the auto-aligned HTM dataset is effective that it can improve the visual representation quality.
 
-### Datasets
+### Datasets (Check [project page](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#dataset-summary) for details)
 * [**HTM-Align**](htm_align/): A manually annotated 80-video subset for alignment evaluation.
 * [**HTM-AA**](htm_aa/): A large-scale video-text paired dataset automatically aligned using our TAN without using any manual annotations.
+* [**Sentencified HTM**](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify): The original HTM dataset but the ASR is processed into full sentences.
 
 ### Tool
 * [**Sentencify-text**](sentencify_text/): A pipeline to pre-process ASR text segments and get full sentences.
