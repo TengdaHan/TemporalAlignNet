@@ -10,7 +10,10 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 <img src="TAN_teaser.png" width="800">
 
 ### News
-* [22.08.04] Released HTM-370K and HTM-1.2M [here](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify), the sentencified version of HowTo100M. Thank you for your patience, I'm working on the rest.
+* [22.09.14] Fixed a few typos and some incorrect annotations in [HTM-Align](htm_align/).
+This [download link]((http://www.robots.ox.ac.uk/~htd/tan/htm_align.json)) is up-to-date.
+* [22.08.04] Released HTM-370K and HTM-1.2M [here](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify), 
+the sentencified version of HowTo100M. Thank you for your patience, I'm working on the rest.
 
 ### TLDR
 
@@ -19,8 +22,8 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
   1. if the ASR sentence is alignable with the video,
   2. if yes, the most corresponding video timestamps.
 * Our model is trained without human annotation, and can be used to clean-up the 
-noisy instructional videos (we release an Auto-Aligned HTM dataset, **HTM-AA**). 
-* In our paper, we show the auto-aligned HTM dataset is effective that it can improve the visual representation quality.
+noisy instructional videos (as the output, we release an Auto-Aligned HTM dataset, **HTM-AA**). 
+* In our paper, we show the auto-aligned HTM dataset can improve the backbone visual representation quality comparing with original HTM.
 
 ### Datasets (Check [project page](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#dataset-summary) for details)
 * [**HTM-Align**](htm_align/): A manually annotated 80-video subset for alignment evaluation.
