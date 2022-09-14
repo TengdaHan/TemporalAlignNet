@@ -10,6 +10,8 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 <img src="TAN_teaser.png" width="800">
 
 ### News
+* [22.09.14] Fixed a bug that affects the ROC-AUC calculation on HTM-Align dataset. Other metrics are not affected. 
+Will update the new ROC-AUC numbers soon.
 * [22.09.14] Fixed a few typos and some incorrect annotations in [HTM-Align](htm_align/).
 This [download link](http://www.robots.ox.ac.uk/~htd/tan/htm_align.json) is up-to-date.
 * [22.08.04] Released HTM-370K and HTM-1.2M [here](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify), 
