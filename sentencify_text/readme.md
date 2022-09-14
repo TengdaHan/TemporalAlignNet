@@ -77,6 +77,9 @@ Use to pre-process HowTo100M dataset:
 python process_htm.py  # check process_htm.py for details
 ```
 
+### Sentence-version of HowTo100M
+Check https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify 
+
 ### Reference
 
 If you find this module useful for your project, please consider citing our paper:

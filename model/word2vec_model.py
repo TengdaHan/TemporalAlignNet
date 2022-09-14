@@ -85,9 +85,14 @@ class Word2VecModel(nn.Module):
         with torch.no_grad():
             x = self.word_embd(input_ids)
         x = F.relu(self.fc1(x), inplace=True)
+
+        # original implementation from Miech et al.:
+        # x = F.relu(self.fc1(x), inplace=True)
         # x = torch.max(x, dim=1)[0]
         # x = self.fc2(x)
+        # we modified so it supports ignoring certain positions i.e. padding tokens
         if attention_mask is not None:  # 1 means keep, 0 means ignore
+            attention_mask[(attention_mask.sum(-1) == 0),:] = True  # in case the whole sentence is all stop words
             x_ = x.masked_fill(~attention_mask[:,:,None].bool(), -6e4)
             pooled_output = torch.max(x_, dim=1).values
         else:

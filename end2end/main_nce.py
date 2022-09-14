@@ -7,6 +7,8 @@ import builtins
 from transformers import AdamW
 from tensorboardX import SummaryWriter
 import time
+import math
+import functools
 from einops import rearrange
 import torch.cuda.amp as amp 
 import torch.nn.functional as F
@@ -356,11 +358,18 @@ def main(args):
             print(f'Not resuming optimizer states due to Error: {e}\nInitialized the optimizer instead...')
 
     args.decay_steps = args.epochs * len(train_loader)
-    lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
-        optimizer,  # wrapped optimizer
-        T_0=int(args.decay_steps), # 1st restart
-        eta_min=0,  # minimum learning rate.
-        last_epoch=-1)
+    args.warmup_iterations = 1000
+    def lr_schedule_fn(iteration, iter_per_epoch, args):
+        if iteration < args.warmup_iterations:
+            lr_multiplier = iteration / (args.warmup_iterations)
+        else:
+            lr_multiplier = 0.5 * \
+                (1. + math.cos(math.pi * (iteration - args.warmup_iterations) / (args.epochs*iter_per_epoch - args.warmup_iterations)))
+        return lr_multiplier
+
+    lr_scheduler = torch.optim.lr_scheduler.LambdaLR(
+        optimizer, functools.partial(lr_schedule_fn, iter_per_epoch=len(train_loader)*args.resample, args=args)
+    )
     lr_scheduler.step(args.iteration)  # for resume mode
     grad_scaler = amp.GradScaler()
 

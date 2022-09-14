@@ -80,7 +80,7 @@ class HTM_FeatureLoader():
         # loading some helper csv/json
         tag_to_asr = {
             'htm-fe': 'vid_to_asr_fe.json',
-            'htm': 'vid_to_asr.json'}
+            'htm-370k': 'sentencified_htm_370k.json'}
         holdout_vids_set = get_holdout_set()
         self.htm_vlen_df = get_htm_vlen_df()
         self.vid_to_asr_dict = get_vid_to_asr_dict(
@@ -166,7 +166,10 @@ class HTM_FeatureLoader():
 
 
     def _get_text(self, vid, vlen):
-        cap_df = pd.read_csv(self.vid_to_asr_dict[vid])
+        if self.text_tag in ['htm-370k']:
+            cap_df = pd.DataFrame.from_dict(self.vid_to_asr_dict[vid])
+        else:
+            cap_df = pd.read_csv(self.vid_to_asr_dict[vid])
         cap_df = cap_df[cap_df['end'] < vlen]
         last_timestamp = cap_df['end'].tolist()[-1]
 
@@ -201,6 +204,9 @@ class HTM_FeatureLoader():
                 trim_start = max(s - start_timestamp, 0)
                 trim_end = min(e - start_timestamp, self.duration)
                 if trim_end == trim_start:
+                    break
+
+                if isinstance(self.tokenizer, Word2VecTokenizer) and (sum(token) == 0):  # all words are stop words
                     break
 
                 sentences.append(text)

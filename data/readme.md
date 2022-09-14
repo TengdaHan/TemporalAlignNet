@@ -2,11 +2,24 @@
 
 The directory for data loaders for TAN experiments (not for [end-to-end](../end2end/) experiments).
 
-### Preparation
+
+### Instruction
+
+We have shared the pre-processed ASR sentence of the entire HowTo100M dataset (i.e. the output of `sentencify-text` module for all HTM videos) on VGG server: https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify
+
+You should download and place the files as
+
+```sh
+data/
+    sentencified_htm_370k.json
+    htm_align.json
+```
+
+### Preparation (optional)
 
 1. Pre-process HowTo100M ASR text with [sentencify-text module](../sentencify_text/process_htm.py)
 
-2. Store the processed ASR sentences as separate csv files, e.g. `abcdefghi1.csv` contains
+2. Store the processed ASR sentences as separate csv files, e.g. `abcdefghijk.csv` contains
     ```sh
     start,end,text
     4.13,6.50,"so we've moved location for our dessert"
@@ -16,7 +29,7 @@ The directory for data loaders for TAN experiments (not for [end-to-end](../end2
 
 3. Prepare an `vid_to_asr.json` file in this directory, containing a dictionary mapping `vid` to the csv path for ASR, e.g.
     ```python
-    {'abcdefghi1': 'your_path/abcdefghi1.csv',
+    {'abcdefghijk': 'your_path/abcdefghijk.csv',
      ...}
     ```
 
@@ -26,8 +39,3 @@ The directory for data loaders for TAN experiments (not for [end-to-end](../end2
     ```
     You should see a list of strings without error.
 
-### Support
-
-We are discussing about sharing the pre-processed ASR sentence of the entire HowTo100M dataset (i.e. the output of `sentencify-text` module for all HTM videos) on VGG server.
-
-If there is any progress, I will update here.
