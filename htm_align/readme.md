@@ -19,6 +19,62 @@ print(htm_align['-3CEg4y7mQM'][1])
 # format: [alignability (1/0), start(second), end(second), text]
 ```
 
+### Performance on HTM-Align
+
+<table>
+<thead>
+  <tr>
+    <th>method</th>
+    <th>time window for inference</th>
+    <th>HTM-Align R@1</th>
+    <th>HTM-Align ROC-AUC</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>CLIP ViT-B32</td>
+    <td>global</td>
+    <td>17.5</td>
+    <td>70.9*</td>
+  </tr>
+  <tr>
+    <td>CLIP ViT-B32</td>
+    <td>64s moving window**</td>
+    <td>23.4</td>
+    <td>70.9*</td>
+  </tr>
+  <tr>
+    <td>MIL-NCE</td>
+    <td>global</td>
+    <td>28.7</td>
+    <td>73.3*</td>
+  </tr>
+  <tr>
+    <td>MIL-NCE</td>
+    <td>64s moving window**</td>
+    <td>34.2</td>
+    <td>73.4*</td>
+  <tr>
+    <td>TAN (HTM-370K) exp-D</td>
+    <td>64s moving window</td>
+    <td><b>49.8</b></td>
+    <td><b>75.1</b></td>
+  </tr>
+  </tr>
+</tbody>
+</table>
+
+*: since the model does not have a binary classifier for alignability, for each sentence, 
+we first compute the sentence-visual similarity scores,
+then take its maximum score over time as the alignability measurement to compute ROC-AUC.
+
+**: in the paper, we only reported CLIP and MIL-NCE results with the 'global' time window setting, since CLIP and MIL-NCE do not use long-range temporal context. Here we also show their results with the 'moving window' setting for a fair comparison.
+
+Note: After fixing a bug in ROC-AUC metric, 
+the reproduced ROC-AUC scores are different with the numbers originally reported in the paper Table 1. 
+Please consider comparing with the new results here.
+We will update our arXiv paper for this correction.
+
 ### Reference
 
 If you find this dataset useful for your project, please consider citing our paper:
