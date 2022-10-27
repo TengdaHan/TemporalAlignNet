@@ -70,7 +70,7 @@ then take its maximum score over time as the alignability measurement to compute
 
 **: in the paper, we only reported CLIP and MIL-NCE results with the 'global' time window setting, since CLIP and MIL-NCE do not use long-range temporal context. Here we also show their results with the 'moving window' setting for a fair comparison.
 
-Note: After fixing a bug in ROC-AUC metric, 
+Note: After fixing a bug (I did not divide in [this line](../eval/eval_zeroshot_align.py#L204)) in ROC-AUC metric, 
 the reproduced ROC-AUC scores are different with the numbers originally reported in the paper Table 1. 
 Please consider comparing with the new results here.
 We will update our arXiv paper for this correction.
