@@ -10,8 +10,7 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 <img src="TAN_teaser.png" width="800">
 
 ### News
-* [22.09.14] Fixed a bug that affects the ROC-AUC calculation on HTM-Align dataset. Other metrics are not affected. 
-Will update the new ROC-AUC numbers soon.
+* [22.09.14] Fixed a bug that affects the ROC-AUC calculation on HTM-Align dataset. Other metrics are not affected. [Details](htm_align#performance-on-htm-align)
 * [22.09.14] Fixed a few typos and some incorrect annotations in [HTM-Align](htm_align/).
 This [download link](http://www.robots.ox.ac.uk/~htd/tan/htm_align.json) is up-to-date.
 * [22.08.04] Released HTM-370K and HTM-1.2M [here](https://www.robots.ox.ac.uk/~vgg/research/tan/index.html#htm-sentencify), 
@@ -39,11 +38,10 @@ noisy instructional videos (as the output, we release an Auto-Aligned HTM datase
 
 * See instructions in [[train]](./train/)
 ### Using output of TAN for end-to-end training.
-
 * See instructions in [[end2end]](./end2end/)
 
-### Model Zoo
-* We aim to release a model zoo for both TAN variants and end-to-end visual representations in July. Thanks for your interest!
+### Checkpoints of TAN
+* [HTM370K-E6D6-Stage2](https://www.robots.ox.ac.uk/~htd/tan/cotrain_word2vec_htm-370k_len64_e6d6.pth.tar)
 
 ### Reference
 ```

@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 from torch.nn.utils.rnn import pad_sequence
-import json 
+import simplejson as json 
 sys.path.append('../model')
 from word2vec_model import Word2VecTokenizer
 
@@ -67,7 +67,7 @@ class HTM_FeatureLoader():
                  duration=64,
                  trim_ratio=0.1,
                  ):
-        self.video_feature_path = '/scratch/shared/beegfs/htd/DATA/HowTo100M/howto100m_s3d_features'
+        self.video_feature_path = '/scratch/shared/beegfs/shared-datasets/HowTo100M/howto100m_s3d_features'
         self.text_tag = text_tag
         self.mode = mode
         if tokenizer:
@@ -80,7 +80,8 @@ class HTM_FeatureLoader():
         # loading some helper csv/json
         tag_to_asr = {
             'htm-fe': 'vid_to_asr_fe.json',
-            'htm-370k': 'sentencified_htm_370k.json'}
+            'htm-370k': 'sentencified_htm_370k.json',
+            'htm-1200k': 'sentencified_htm_1200k.json'}
         holdout_vids_set = get_holdout_set()
         self.htm_vlen_df = get_htm_vlen_df()
         self.vid_to_asr_dict = get_vid_to_asr_dict(
@@ -121,6 +122,10 @@ class HTM_FeatureLoader():
             out_batch['cut_start'] = [sample['cut_start'] for sample in batch]
         if 'cut_end' in batch[0]:
             out_batch['cut_end'] = [sample['cut_end'] for sample in batch]
+        if 'abs_text_start' in batch[0]:
+            out_batch['abs_text_start'] = [sample['abs_text_start'] for sample in batch]
+        if 'abs_text_end' in batch[0]:
+            out_batch['abs_text_end'] = [sample['abs_text_end'] for sample in batch]
         return out_batch 
 
     def __getitem__(self, index):
@@ -158,6 +163,8 @@ class HTM_FeatureLoader():
                 'start': caps['start'],
                 'end': caps['end'],
                 'token': caps['token'],
+                'abs_text_start': (np.array(caps['start']).astype(np.float32) + start_timestamp) / vlen,
+                'abs_text_end': (np.array(caps['end']).astype(np.float32) + start_timestamp) / vlen,
                 }
         # also give video start/end for visualization
         if self.mode in ['val', 'test']:
@@ -166,21 +173,27 @@ class HTM_FeatureLoader():
 
 
     def _get_text(self, vid, vlen):
-        if self.text_tag in ['htm-370k']:
+        if self.text_tag in ['htm-370k', 'htm-1200k']:
             cap_df = pd.DataFrame.from_dict(self.vid_to_asr_dict[vid])
         else:
             cap_df = pd.read_csv(self.vid_to_asr_dict[vid])
         cap_df = cap_df[cap_df['end'] < vlen]
-        last_timestamp = cap_df['end'].tolist()[-1]
 
         no_caption_flag = False
-        if (cap_df['start'] < last_timestamp - self.duration - 1).sum() == 0:
-            no_caption_flag = True
+
+        if len(cap_df['end'].tolist()):
+            last_timestamp = cap_df['end'].tolist()[-1]
         else:
-            start_idx = np.random.choice(
-                cap_df.index[cap_df['start'] < last_timestamp - self.duration])
-            start_timestamp = int(round(cap_df.iloc[start_idx]['start']))
-            end_timestamp = start_timestamp + self.duration
+            no_caption_flag = True
+        
+        if not no_caption_flag:
+            if (cap_df['start'] < last_timestamp - self.duration - 1).sum() == 0:
+                no_caption_flag = True
+            else:
+                start_idx = np.random.choice(
+                    cap_df.index[cap_df['start'] < last_timestamp - self.duration])
+                start_timestamp = int(round(cap_df.iloc[start_idx]['start']))
+                end_timestamp = start_timestamp + self.duration
 
         sentences = []
         tokens = []
