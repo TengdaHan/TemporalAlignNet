@@ -44,7 +44,7 @@ noisy instructional videos (as the output, we release an Auto-Aligned HTM datase
 * [HTM370K-E6D6-Stage2](https://www.robots.ox.ac.uk/~htd/tan/cotrain_word2vec_htm-370k_len64_e6d6.pth.tar)
 
 ### Reference
-```
+```bibtex
 @InProceedings{han2022align,
   title={Temporal Alignment Network for long-term Video},  
   author={Tengda Han and Weidi Xie and Andrew Zisserman},  
