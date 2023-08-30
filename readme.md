@@ -10,6 +10,7 @@ Tengda Han, Weidi Xie, Andrew Zisserman. CVPR2022 Oral.
 <img src="TAN_teaser.png" width="800">
 
 ### News
+* [23.08.30] We released WhisperX output and new visual features for HowTo100M [here](htm_zoo/).
 * [22.09.14] Fixed a bug that affects the ROC-AUC calculation on HTM-Align dataset. Other metrics are not affected. [Details](htm_align#performance-on-htm-align)
 * [22.09.14] Fixed a few typos and some incorrect annotations in [HTM-Align](htm_align/).
 This [download link](http://www.robots.ox.ac.uk/~htd/tan/htm_align.json) is up-to-date.

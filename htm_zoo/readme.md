@@ -7,8 +7,7 @@ It is commonly known that the ASR from YouTube has some noises, including synchr
 
 We use the time-wise accurate [WhisperX](https://github.com/m-bain/whisperX) package to process all the HowTo100M audio files, which gives **word-level** timestamps and highly accurate language recognition. WhisperX is build on [OpenAI's Whisper](https://github.com/openai/whisper) with additional phoneme alignment module to ensure accurate timestamp of the ASR.
 
-We used the `whisper-large-v2` version. The entire processing costs about 9000 USD on AWS.
-For non-EN language, we provide ASR and word-level timestamps in the local langauge (if supported by whisperX), as well as English translation, but with sentence-level timestamps.
+We used the `whisper-large-v2` version, the [best whisper version](https://github.com/openai/whisper/discussions/661) provided by OpenAI. For non-EN language, we provide ASR and word-level timestamps in the local langauge (if supported by whisperX), as well as English translation, but with sentence-level timestamps.
 
 * Downloading script: [here (64 tar.gz files of json, totally 25GB)](whisperx/download_whisperx_script.sh)
 * Extraction script: [here (after unzip about 130GB)](whisperx/extract_whisperx_script.sh)
@@ -20,7 +19,7 @@ For non-EN language, we provide ASR and word-level timestamps in the local langa
 We provide recent/stronger visual features for HowTo100M. Following [Miech et al.](https://www.di.ens.fr/willow/research/howto100m/), we provide features at **1 vector-per-second**. For the original S3D features, please refer to [Miech et al.](https://www.di.ens.fr/willow/research/howto100m/)
 
 Currently we provide the following visual features:
-* [InternVideo-MM-L14](https://github.com/OpenGVLab/InternVideo)
+* [InternVideo-MM-L14](https://github.com/OpenGVLab/InternVideo).
     * Downloading script: (Comming soon, 1.4TB)
     * Our [feature extraction script](visual/extract_feature_template.py)
 * [CLIP-ViT-L-14](https://github.com/openai/CLIP)
