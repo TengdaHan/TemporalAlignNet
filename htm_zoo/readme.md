@@ -20,7 +20,8 @@ We provide recent/stronger visual features for HowTo100M. Following [Miech et al
 
 Currently we provide the following visual features:
 * [InternVideo-MM-L14](https://github.com/OpenGVLab/InternVideo).
-    * Downloading script: (Comming soon, 1.4TB)
+    * Downloading script: [here (64 tar files, totally 1.4TB)](visual/download_internvideo_script.sh)
+    * (Optional) sha256 checksum: [here, 10KB](https://thor.robots.ox.ac.uk/HowTo100M/internvideo_MM_L14/internvideo_MM_L14.sha512sums)
     * Our [feature extraction script](visual/extract_feature_template.py)
 * [CLIP-ViT-L-14](https://github.com/openai/CLIP)
     * Downloading script: (Comming soon, 700GB)
