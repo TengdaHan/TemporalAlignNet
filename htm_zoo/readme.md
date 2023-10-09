@@ -24,7 +24,7 @@ Currently we provide the following visual features:
     * (Optional) sha256 checksum: [here, 10KB](https://thor.robots.ox.ac.uk/HowTo100M/internvideo_MM_L14/internvideo_MM_L14.sha512sums)
     * Our [feature extraction script](visual/extract_feature_template.py)
 * [CLIP-ViT-L-14](https://github.com/openai/CLIP)
-    * Downloading script: (Comming soon, 700GB)
+    * Downloading script: [here (64 tar files, totally 700GB)](visual/download_clipL14_script.sh)
     * Our [feature extraction script](visual/extract_feature_template.py)
 
 #### Feature quality benchmarked on HTM-Align
